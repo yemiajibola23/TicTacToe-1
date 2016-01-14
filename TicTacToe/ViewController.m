@@ -34,31 +34,33 @@
     self.grid = @[self.buttonOne,   self.buttonTwo,   self.buttonThree,
                   self.buttonFour,  self.buttonFive,  self.buttonSix,
                   self.buttonSeven, self.buttonEight, self.buttonNine];
-    
+    [self resetGame];
 }
 
 - (IBAction)onButtonTapped:(UIButton *)sender {
-    [sender setTitle:self.player forState:UIControlStateNormal];
+    [sender setTitle:[NSString stringWithFormat:@"[%@]",self.player] forState:UIControlStateNormal];
     [sender setEnabled:false];
     
-    if ([_grid[0] isEqualToString:_grid[1]] && [_grid[0] isEqualToString:_grid[2]]){
+           if([[_grid[0] titleLabel].text isEqualToString:self.player] && [[_grid[0] titleLabel].text isEqualToString:[_grid[2] titleLabel].text]){
         self.whoWon = self.player;
-    } else if([_grid[0] isEqualToString:_grid[3]] && [_grid[4] isEqualToString:_grid[5]]){
+    } else if([[_grid[0] titleLabel].text isEqualToString:[_grid[3] titleLabel].text] && [[_grid[4] titleLabel].text isEqualToString:[_grid[5] titleLabel].text]){
         self.whoWon = self.player;
-    } else if([_grid[0] isEqualToString:_grid[6]] && [_grid[7] isEqualToString:_grid[8]]){
+    } else if([[_grid[0] titleLabel].text isEqualToString:[_grid[6] titleLabel].text] && [[_grid[7] titleLabel].text isEqualToString:[_grid[8] titleLabel].text]){
         self.whoWon = self.player;
-    } else if([_grid[0] isEqualToString:_grid[0]] && [_grid[4] isEqualToString:_grid[8]]){
+    } else if([[_grid[0] titleLabel].text isEqualToString:[_grid[0] titleLabel].text] && [[_grid[4] titleLabel].text isEqualToString:[_grid[8] titleLabel].text]){
         self.whoWon = self.player;
-    } else if([_grid[0] isEqualToString:_grid[0]] && [_grid[3] isEqualToString:_grid[6]]){
+    } else if([[_grid[0] titleLabel].text isEqualToString:[_grid[0] titleLabel].text] && [[_grid[3] titleLabel].text isEqualToString:[_grid[6] titleLabel].text]){
         self.whoWon = self.player;
-    } else if([_grid[0] isEqualToString:_grid[1]] && [_grid[4] isEqualToString:_grid[7]]){
+    } else if([[_grid[0] titleLabel].text isEqualToString:[_grid[1] titleLabel].text] && [[_grid[4] titleLabel].text isEqualToString:[_grid[7] titleLabel].text]){
         self.whoWon = self.player;
-    } else if([_grid[0] isEqualToString:_grid[2]] && [_grid[5] isEqualToString:_grid[8]]){
+    } else if([[_grid[0] titleLabel].text isEqualToString:[_grid[2] titleLabel].text] && [[_grid[5] titleLabel].text isEqualToString:[_grid[8] titleLabel].text]){
         self.whoWon = self.player;
-    } else if([_grid[0] isEqualToString:_grid[2]] && [_grid[4] isEqualToString:_grid[6]]){
+    } else if([[_grid[0] titleLabel].text isEqualToString:[_grid[2] titleLabel].text] && [[_grid[4] titleLabel].text isEqualToString:[_grid[6] titleLabel].text]){
         self.whoWon = self.player;
     }
-    
+    if (![self.whoWon isEqualToString:@""] || self.whoWon != nil) {
+        [self proclaimVictory:self.whoWon];
+    }
 
 
 
@@ -90,9 +92,11 @@
 }
 
 -(void)resetGame {
-//    for (UIButton *button in self.grid) {
-//        
-//    }
+    for (UIButton *button in self.grid) {
+        [button setTitle:@"[ ]" forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [button setEnabled:YES];
+    }
 }
 
 @end

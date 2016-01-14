@@ -30,9 +30,10 @@
     self.player = self.whichPlayerLabel.text;
 }
 
-
 - (IBAction)onButtonTapped:(UIButton *)sender {
     [sender setTitle:self.player forState:UIControlStateNormal];
+    [sender setEnabled:false];
+    
     
     
     if ([self.player isEqualToString:@"X"]) {

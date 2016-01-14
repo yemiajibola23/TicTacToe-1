@@ -34,6 +34,7 @@
     self.grid = @[self.buttonOne,   self.buttonTwo,   self.buttonThree,
                   self.buttonFour,  self.buttonFive,  self.buttonSix,
                   self.buttonSeven, self.buttonEight, self.buttonNine];
+    
 }
 
 - (IBAction)onButtonTapped:(UIButton *)sender {
@@ -71,6 +72,25 @@
 
     }
     self.whichPlayerLabel.text = self.player;
+}
+
+-(void)proclaimVictory:(NSString *)winner {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"WINNER!"
+                                                                   message:[NSString
+                                                                            stringWithFormat:@"%@ has won!",winner]
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"Play Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self resetGame];
+    }]];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+
+}
+
+-(void)resetGame {
+    //Reset game logic
 }
 
 @end

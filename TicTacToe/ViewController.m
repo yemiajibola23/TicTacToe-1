@@ -23,7 +23,7 @@
 @property NSString *player;
 @property NSArray *grid;
 @property NSString *whoWon;
-
+@property NSString *gridPlaceholder;
 @end
 
 @implementation ViewController
@@ -36,6 +36,7 @@
                   self.buttonSeven, self.buttonEight, self.buttonNine];
     
     [self resetGame];
+    self.gridPlaceholder = [self.grid[0] currentTitle];
 }
 
 - (IBAction)onButtonTapped:(UIButton *)sender {
@@ -96,12 +97,10 @@
         self.whoWon = self.player;
         [self proclaimVictory:self.whoWon];
     }
-//    if (![self.whoWon isEqualToString:@""] || self.whoWon != ) {
-//        [self proclaimVictory:self.whoWon];
-//    }
-
 
     [sender setEnabled:false];
+    
+    
     
     if ([self.player isEqualToString:@"X"]) {
         self.player = @"O";

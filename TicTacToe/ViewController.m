@@ -90,7 +90,9 @@
 }
 
 -(void)resetGame {
-    //Reset game logic
+//    for (UIButton *button in self.grid) {
+//        
+//    }
 }
 
 @end

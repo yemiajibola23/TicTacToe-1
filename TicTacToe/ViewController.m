@@ -34,11 +34,11 @@
     self.grid = @[self.buttonOne,   self.buttonTwo,   self.buttonThree,
                   self.buttonFour,  self.buttonFive,  self.buttonSix,
                   self.buttonSeven, self.buttonEight, self.buttonNine];
-    
+    [self resetGame];
 }
 
 - (IBAction)onButtonTapped:(UIButton *)sender {
-    [sender setTitle:self.player forState:UIControlStateNormal];
+    [sender setTitle:[NSString stringWithFormat:@"[%@]",self.player] forState:UIControlStateNormal];
     [sender setEnabled:false];
     
     if ([[_grid[0] titleLabel].text isEqualToString:self.player]
@@ -79,6 +79,7 @@
     } else if([[_grid[2] titleLabel].text isEqualToString:self.player]
               && [_grid[4] isEqualToString:self.player]
               && [[_grid[6] titleLabel].text isEqualToString:self.player]){
+
         self.whoWon = self.player;
     }
     if (![self.whoWon isEqualToString:@""] || self.whoWon != nil) {
@@ -115,7 +116,11 @@
 }
 
 -(void)resetGame {
-    //Reset game logic
+    for (UIButton *button in self.grid) {
+        [button setTitle:@"[ ]" forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [button setEnabled:YES];
+    }
 }
 
 @end

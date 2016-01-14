@@ -58,7 +58,9 @@
     } else if([_grid[0] isEqualToString:_grid[2]] && [_grid[4] isEqualToString:_grid[6]]){
         self.whoWon = self.player;
     }
-    
+    if (![self.whoWon isEqualToString:@""] || self.whoWon != nil) {
+        [self proclaimVictory:self.whoWon];
+    }
 
 
 

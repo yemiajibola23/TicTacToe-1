@@ -22,6 +22,7 @@
 
 @property NSString *player;
 @property NSArray *grid;
+@property NSString *whoWon;
 
 @end
 
@@ -30,16 +31,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.player = self.whichPlayerLabel.text;
-    self.grid = @[self.buttonOne,self.buttonTwo,self.buttonThree,
-                        self.buttonFour, self.buttonFive, self.buttonSix,
-                        self.buttonSeven, self.buttonEight, self.buttonNine];
+    self.grid = @[self.buttonOne,   self.buttonTwo,   self.buttonThree,
+                  self.buttonFour,  self.buttonFive,  self.buttonSix,
+                  self.buttonSeven, self.buttonEight, self.buttonNine];
 }
 
 - (IBAction)onButtonTapped:(UIButton *)sender {
     [sender setTitle:self.player forState:UIControlStateNormal];
     [sender setEnabled:false];
     
+    if ([_grid[0] isEqualToString:_grid[1]] && [_grid[0] isEqualToString:_grid[2]]){
+        self.whoWon = self.player;
+    } else if([_grid[0] isEqualToString:_grid[3]] && [_grid[4] isEqualToString:_grid[5]]){
+        self.whoWon = self.player;
+    } else if([_grid[0] isEqualToString:_grid[6]] && [_grid[7] isEqualToString:_grid[8]]){
+        self.whoWon = self.player;
+    } else if([_grid[0] isEqualToString:_grid[0]] && [_grid[4] isEqualToString:_grid[8]]){
+        self.whoWon = self.player;
+    } else if([_grid[0] isEqualToString:_grid[0]] && [_grid[3] isEqualToString:_grid[6]]){
+        self.whoWon = self.player;
+    } else if([_grid[0] isEqualToString:_grid[1]] && [_grid[4] isEqualToString:_grid[7]]){
+        self.whoWon = self.player;
+    } else if([_grid[0] isEqualToString:_grid[2]] && [_grid[5] isEqualToString:_grid[8]]){
+        self.whoWon = self.player;
+    } else if([_grid[0] isEqualToString:_grid[2]] && [_grid[4] isEqualToString:_grid[6]]){
+        self.whoWon = self.player;
+    }
     
+
+
+
     
     if ([self.player isEqualToString:@"X"]) {
         self.player = @"O";

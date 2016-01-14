@@ -41,21 +41,44 @@
     [sender setTitle:self.player forState:UIControlStateNormal];
     [sender setEnabled:false];
     
-    if ([_grid[0] isEqualToString:_grid[1]] && [_grid[0] isEqualToString:_grid[2]]){
+    if ([[_grid[0] titleLabel].text isEqualToString:self.player]
+        && [_grid[1] isEqualToString:self.player]
+        && [[_grid[2] titleLabel].text isEqualToString:self.player]){
         self.whoWon = self.player;
-    } else if([_grid[0] isEqualToString:_grid[3]] && [_grid[4] isEqualToString:_grid[5]]){
+        
+    } else if([[_grid[3] titleLabel].text isEqualToString:self.player]
+              && [_grid[4] isEqualToString:self.player]
+              && [[_grid[5] titleLabel].text isEqualToString:self.player]){
         self.whoWon = self.player;
-    } else if([_grid[0] isEqualToString:_grid[6]] && [_grid[7] isEqualToString:_grid[8]]){
+        
+    } else if([[_grid[6] titleLabel].text isEqualToString:self.player]
+              && [_grid[7] isEqualToString:self.player]
+              && [[_grid[8] titleLabel].text isEqualToString:self.player]){
         self.whoWon = self.player;
-    } else if([_grid[0] isEqualToString:_grid[0]] && [_grid[4] isEqualToString:_grid[8]]){
+        
+    } else if([[_grid[0] titleLabel].text isEqualToString:self.player]
+              && [_grid[4] isEqualToString:self.player]
+              && [[_grid[8] titleLabel].text isEqualToString:self.player]){
+        
         self.whoWon = self.player;
-    } else if([_grid[0] isEqualToString:_grid[0]] && [_grid[3] isEqualToString:_grid[6]]){
+    } else if([[_grid[0] titleLabel].text isEqualToString:self.player]
+              && [_grid[3] isEqualToString:self.player]
+              && [[_grid[6] titleLabel].text isEqualToString:self.player]){
+        
         self.whoWon = self.player;
-    } else if([_grid[0] isEqualToString:_grid[1]] && [_grid[4] isEqualToString:_grid[7]]){
+    } else if([[_grid[1] titleLabel].text isEqualToString:self.player]
+              && [_grid[4] isEqualToString:self.player]
+              && [[_grid[7] titleLabel].text isEqualToString:self.player]){
+        
         self.whoWon = self.player;
-    } else if([_grid[0] isEqualToString:_grid[2]] && [_grid[5] isEqualToString:_grid[8]]){
+    } else if([[_grid[2] titleLabel].text isEqualToString:self.player]
+              && [_grid[5] isEqualToString:self.player]
+              && [[_grid[8] titleLabel].text isEqualToString:self.player]){
+        
         self.whoWon = self.player;
-    } else if([_grid[0] isEqualToString:_grid[2]] && [_grid[4] isEqualToString:_grid[6]]){
+    } else if([[_grid[2] titleLabel].text isEqualToString:self.player]
+              && [_grid[4] isEqualToString:self.player]
+              && [[_grid[6] titleLabel].text isEqualToString:self.player]){
         self.whoWon = self.player;
     }
     if (![self.whoWon isEqualToString:@""] || self.whoWon != nil) {

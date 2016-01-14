@@ -34,60 +34,74 @@
     self.grid = @[self.buttonOne,   self.buttonTwo,   self.buttonThree,
                   self.buttonFour,  self.buttonFive,  self.buttonSix,
                   self.buttonSeven, self.buttonEight, self.buttonNine];
+    
     [self resetGame];
 }
 
 - (IBAction)onButtonTapped:(UIButton *)sender {
-    [sender setTitle:[NSString stringWithFormat:@"[%@]",self.player] forState:UIControlStateNormal];
-    [sender setEnabled:false];
+    [sender setTitle:[NSString stringWithFormat:@"%@",self.player] forState:UIControlStateNormal];
+    [sender setHighlighted:NO];
     
-    if ([[_grid[0] titleLabel].text isEqualToString:self.player]
-        && [_grid[1] isEqualToString:self.player]
-        && [[_grid[2] titleLabel].text isEqualToString:self.player]){
+    
+    NSLog(@"%@",[_grid[0] currentTitle]);
+    
+    
+    
+    if ([[_grid[0] currentTitle] isEqualToString:self.player]
+        && [[_grid[1] currentTitle] isEqualToString:self.player]
+        && [[_grid[2] currentTitle] isEqualToString:self.player]){
         self.whoWon = self.player;
+        [self proclaimVictory:self.whoWon];
         
-    } else if([[_grid[3] titleLabel].text isEqualToString:self.player]
-              && [_grid[4] isEqualToString:self.player]
-              && [[_grid[5] titleLabel].text isEqualToString:self.player]){
+    } else if([[_grid[3] currentTitle] isEqualToString:self.player]
+              && [[_grid[4] currentTitle] isEqualToString:self.player]
+              && [[_grid[5] currentTitle] isEqualToString:self.player]){
         self.whoWon = self.player;
+        [self proclaimVictory:self.whoWon];
         
-    } else if([[_grid[6] titleLabel].text isEqualToString:self.player]
-              && [_grid[7] isEqualToString:self.player]
-              && [[_grid[8] titleLabel].text isEqualToString:self.player]){
+    } else if([[_grid[6] currentTitle] isEqualToString:self.player]
+              && [[_grid[7] currentTitle] isEqualToString:self.player]
+              && [[_grid[8] currentTitle] isEqualToString:self.player]){
         self.whoWon = self.player;
+        [self proclaimVictory:self.whoWon];
         
-    } else if([[_grid[0] titleLabel].text isEqualToString:self.player]
-              && [_grid[4] isEqualToString:self.player]
-              && [[_grid[8] titleLabel].text isEqualToString:self.player]){
-        
-        self.whoWon = self.player;
-    } else if([[_grid[0] titleLabel].text isEqualToString:self.player]
-              && [_grid[3] isEqualToString:self.player]
-              && [[_grid[6] titleLabel].text isEqualToString:self.player]){
-        
-        self.whoWon = self.player;
-    } else if([[_grid[1] titleLabel].text isEqualToString:self.player]
-              && [_grid[4] isEqualToString:self.player]
-              && [[_grid[7] titleLabel].text isEqualToString:self.player]){
+    } else if([[_grid[0] currentTitle] isEqualToString:self.player]
+              && [[_grid[4] currentTitle] isEqualToString:self.player]
+              && [[_grid[8] currentTitle] isEqualToString:self.player]){
         
         self.whoWon = self.player;
-    } else if([[_grid[2] titleLabel].text isEqualToString:self.player]
-              && [_grid[5] isEqualToString:self.player]
-              && [[_grid[8] titleLabel].text isEqualToString:self.player]){
+        [self proclaimVictory:self.whoWon];
+    } else if([[_grid[0] currentTitle] isEqualToString:self.player]
+              && [[_grid[3] currentTitle] isEqualToString:self.player]
+              && [[_grid[6] currentTitle] isEqualToString:self.player]){
         
         self.whoWon = self.player;
-    } else if([[_grid[2] titleLabel].text isEqualToString:self.player]
-              && [_grid[4] isEqualToString:self.player]
-              && [[_grid[6] titleLabel].text isEqualToString:self.player]){
+        [self proclaimVictory:self.whoWon];
+    } else if([[_grid[1] currentTitle] isEqualToString:self.player]
+              && [[_grid[4] currentTitle] isEqualToString:self.player]
+              && [[_grid[7] currentTitle] isEqualToString:self.player]){
+        
+        self.whoWon = self.player;
+        [self proclaimVictory:self.whoWon];
+    } else if([[_grid[2] currentTitle] isEqualToString:self.player]
+              && [[_grid[5] currentTitle] isEqualToString:self.player]
+              && [[_grid[8] currentTitle] isEqualToString:self.player]){
+        
+        self.whoWon = self.player;
+        [self proclaimVictory:self.whoWon];
+    } else if([[_grid[2] currentTitle] isEqualToString:self.player]
+              && [[_grid[4] currentTitle] isEqualToString:self.player]
+              && [[_grid[6] currentTitle] isEqualToString:self.player]){
 
         self.whoWon = self.player;
-    }
-    if (![self.whoWon isEqualToString:@""] || self.whoWon != nil) {
         [self proclaimVictory:self.whoWon];
     }
+//    if (![self.whoWon isEqualToString:@""] || self.whoWon != ) {
+//        [self proclaimVictory:self.whoWon];
+//    }
 
 
-
+    [sender setEnabled:false];
     
     if ([self.player isEqualToString:@"X"]) {
         self.player = @"O";
@@ -98,6 +112,7 @@
 
     }
     self.whichPlayerLabel.text = self.player;
+   
 }
 
 -(void)proclaimVictory:(NSString *)winner {
@@ -122,5 +137,7 @@
         [button setEnabled:YES];
     }
 }
+
+
 
 @end

@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *whichPlayerLabel;
 
 @property NSString *player;
+@property NSArray *grid;
+
 @end
 
 @implementation ViewController
@@ -28,6 +30,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.player = self.whichPlayerLabel.text;
+    self.grid = @[self.buttonOne,self.buttonTwo,self.buttonThree,
+                        self.buttonFour, self.buttonFive, self.buttonSix,
+                        self.buttonSeven, self.buttonEight, self.buttonNine];
 }
 
 - (IBAction)onButtonTapped:(UIButton *)sender {

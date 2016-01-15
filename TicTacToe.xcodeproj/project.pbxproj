@@ -13,6 +13,11 @@
 		13F979641C4836A300E09A8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13F979621C4836A300E09A8E /* Main.storyboard */; };
 		13F979661C4836A300E09A8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13F979651C4836A300E09A8E /* Assets.xcassets */; };
 		13F979691C4836A300E09A8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13F979671C4836A300E09A8E /* LaunchScreen.storyboard */; };
+		4C61CB3E1C49517D00A9555D /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61CB3D1C49517D00A9555D /* GameViewController.m */; };
+		4C61CB411C4952CA00A9555D /* DraggableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61CB401C4952CA00A9555D /* DraggableImageView.m */; };
+		4C61CB441C4956D100A9555D /* GridSpot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61CB431C4956D100A9555D /* GridSpot.m */; };
+		4C61CB4A1C49892200A9555D /* TokenImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61CB491C49892200A9555D /* TokenImageView.m */; };
+		4C61CB4D1C49AA0500A9555D /* SuperEvilMegaAI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61CB4C1C49AA0500A9555D /* SuperEvilMegaAI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,16 @@
 		13F979651C4836A300E09A8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13F979681C4836A300E09A8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13F9796A1C4836A300E09A8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C61CB3C1C49517D00A9555D /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		4C61CB3D1C49517D00A9555D /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		4C61CB3F1C4952CA00A9555D /* DraggableImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableImageView.h; sourceTree = "<group>"; };
+		4C61CB401C4952CA00A9555D /* DraggableImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableImageView.m; sourceTree = "<group>"; };
+		4C61CB421C4956D100A9555D /* GridSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridSpot.h; sourceTree = "<group>"; };
+		4C61CB431C4956D100A9555D /* GridSpot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridSpot.m; sourceTree = "<group>"; };
+		4C61CB481C49892200A9555D /* TokenImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenImageView.h; sourceTree = "<group>"; };
+		4C61CB491C49892200A9555D /* TokenImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenImageView.m; sourceTree = "<group>"; };
+		4C61CB4B1C49AA0500A9555D /* SuperEvilMegaAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperEvilMegaAI.h; sourceTree = "<group>"; };
+		4C61CB4C1C49AA0500A9555D /* SuperEvilMegaAI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperEvilMegaAI.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,14 +73,9 @@
 		13F979581C4836A300E09A8E /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
-				13F9795C1C4836A300E09A8E /* AppDelegate.h */,
-				13F9795D1C4836A300E09A8E /* AppDelegate.m */,
-				13F9795F1C4836A300E09A8E /* ViewController.h */,
-				13F979601C4836A300E09A8E /* ViewController.m */,
-				13F979621C4836A300E09A8E /* Main.storyboard */,
-				13F979651C4836A300E09A8E /* Assets.xcassets */,
-				13F979671C4836A300E09A8E /* LaunchScreen.storyboard */,
-				13F9796A1C4836A300E09A8E /* Info.plist */,
+				4C61CB381C4950EB00A9555D /* Model */,
+				4C61CB371C4950E600A9555D /* View */,
+				4C61CB361C4950DD00A9555D /* Controller */,
 				13F979591C4836A300E09A8E /* Supporting Files */,
 			);
 			path = TicTacToe;
@@ -77,6 +87,45 @@
 				13F9795A1C4836A300E09A8E /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4C61CB361C4950DD00A9555D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				13F9795F1C4836A300E09A8E /* ViewController.h */,
+				13F979601C4836A300E09A8E /* ViewController.m */,
+				4C61CB3C1C49517D00A9555D /* GameViewController.h */,
+				4C61CB3D1C49517D00A9555D /* GameViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		4C61CB371C4950E600A9555D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				13F979621C4836A300E09A8E /* Main.storyboard */,
+				13F979671C4836A300E09A8E /* LaunchScreen.storyboard */,
+				13F979651C4836A300E09A8E /* Assets.xcassets */,
+				4C61CB3F1C4952CA00A9555D /* DraggableImageView.h */,
+				4C61CB401C4952CA00A9555D /* DraggableImageView.m */,
+				4C61CB421C4956D100A9555D /* GridSpot.h */,
+				4C61CB431C4956D100A9555D /* GridSpot.m */,
+				4C61CB481C49892200A9555D /* TokenImageView.h */,
+				4C61CB491C49892200A9555D /* TokenImageView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		4C61CB381C4950EB00A9555D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				13F9795C1C4836A300E09A8E /* AppDelegate.h */,
+				13F9795D1C4836A300E09A8E /* AppDelegate.m */,
+				13F9796A1C4836A300E09A8E /* Info.plist */,
+				4C61CB4B1C49AA0500A9555D /* SuperEvilMegaAI.h */,
+				4C61CB4C1C49AA0500A9555D /* SuperEvilMegaAI.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,9 +199,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C61CB4A1C49892200A9555D /* TokenImageView.m in Sources */,
+				4C61CB3E1C49517D00A9555D /* GameViewController.m in Sources */,
+				4C61CB441C4956D100A9555D /* GridSpot.m in Sources */,
 				13F979611C4836A300E09A8E /* ViewController.m in Sources */,
 				13F9795E1C4836A300E09A8E /* AppDelegate.m in Sources */,
 				13F9795B1C4836A300E09A8E /* main.m in Sources */,
+				4C61CB411C4952CA00A9555D /* DraggableImageView.m in Sources */,
+				4C61CB4D1C49AA0500A9555D /* SuperEvilMegaAI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +353,7 @@
 				13F9796F1C4836A300E09A8E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

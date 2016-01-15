@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lTm-Bd-kyh">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -172,5 +172,142 @@
             </objects>
             <point key="canvasLocation" x="281" y="408"/>
         </scene>
+        <!--Game View Controller-->
+        <scene sceneID="AKI-Ia-LRp">
+            <objects>
+                <viewController id="lTm-Bd-kyh" customClass="GameViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZoF-4F-3eo"/>
+                        <viewControllerLayoutGuide type="bottom" id="SlT-8N-Vo2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pp8-j1-4oR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Xm6-r3-MYn">
+                                <rect key="frame" x="17" y="163" width="340" height="340"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7uU-S5-w4B">
+                                        <rect key="frame" x="0.0" y="0.0" width="340" height="100"/>
+                                        <subviews>
+                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="FXY-MO-xhK" customClass="GridSpot">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="5uN-Ti-u4T"/>
+                                                    <constraint firstAttribute="height" constant="100" id="nBQ-gv-MKT"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Gr5-GJ-xiu" customClass="GridSpot">
+                                                <rect key="frame" x="120" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="DwN-gP-JqT"/>
+                                                    <constraint firstAttribute="height" constant="100" id="aLX-7a-3Ph"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="tWX-Fo-h2u" customClass="GridSpot">
+                                                <rect key="frame" x="240" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="aML-jZ-9ds"/>
+                                                    <constraint firstAttribute="width" constant="100" id="pAS-c4-feG"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fpJ-mm-2QR">
+                                        <rect key="frame" x="0.0" y="120" width="340" height="100"/>
+                                        <subviews>
+                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="jgM-ZP-CxP" customClass="GridSpot">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="6UM-Q2-4xW"/>
+                                                    <constraint firstAttribute="width" constant="100" id="mNN-TM-yiS"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="JYt-9I-3ZD" customClass="GridSpot">
+                                                <rect key="frame" x="120" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="51Q-XB-sy5"/>
+                                                    <constraint firstAttribute="width" constant="100" id="BfU-dG-sxB"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="bwA-Vf-qix" customClass="GridSpot">
+                                                <rect key="frame" x="240" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="R2n-9n-Btp"/>
+                                                    <constraint firstAttribute="width" constant="100" id="kUi-xc-e91"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="abB-Up-5Ry">
+                                        <rect key="frame" x="0.0" y="240" width="340" height="100"/>
+                                        <subviews>
+                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="1iT-n3-8lw" customClass="GridSpot">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="UKo-uL-XUu"/>
+                                                    <constraint firstAttribute="width" constant="100" id="XKH-cS-pPZ"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="nvW-6A-4Wc" customClass="GridSpot">
+                                                <rect key="frame" x="120" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="4Ey-b5-Jaa"/>
+                                                    <constraint firstAttribute="height" constant="100" id="aXG-ad-SZs"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Ipg-VQ-Iw2" customClass="GridSpot">
+                                                <rect key="frame" x="240" y="0.0" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="7EB-Qb-NAi"/>
+                                                    <constraint firstAttribute="width" constant="100" id="WSI-fI-Vu4"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="340" id="ETn-2e-SPU"/>
+                                    <constraint firstAttribute="width" constant="340" id="icu-AO-EQW"/>
+                                </constraints>
+                            </stackView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="X" translatesAutoresizingMaskIntoConstraints="NO" id="VJS-o2-KLp" userLabel="placeable" customClass="DraggableImageView">
+                                <rect key="frame" x="137" y="513" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="2lW-Ih-ti5"/>
+                                    <constraint firstAttribute="height" constant="100" id="Zfk-US-csy"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Xm6-r3-MYn" firstAttribute="centerX" secondItem="pp8-j1-4oR" secondAttribute="centerX" id="N13-eP-CaB"/>
+                            <constraint firstItem="VJS-o2-KLp" firstAttribute="centerX" secondItem="pp8-j1-4oR" secondAttribute="centerX" id="Ntx-gI-dgW"/>
+                            <constraint firstItem="VJS-o2-KLp" firstAttribute="top" secondItem="Xm6-r3-MYn" secondAttribute="bottom" constant="10" id="aiL-6m-nEZ"/>
+                            <constraint firstItem="Xm6-r3-MYn" firstAttribute="centerY" secondItem="pp8-j1-4oR" secondAttribute="centerY" id="c28-Vb-hbu"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="draggableToken" destination="VJS-o2-KLp" id="PXX-hi-99N"/>
+                        <outlet property="gridSpot0" destination="FXY-MO-xhK" id="9EV-ft-vZ2"/>
+                        <outlet property="gridSpot1" destination="Gr5-GJ-xiu" id="UXP-da-mwU"/>
+                        <outlet property="gridSpot2" destination="tWX-Fo-h2u" id="fpC-t5-9Hk"/>
+                        <outlet property="gridSpot3" destination="jgM-ZP-CxP" id="p3n-oL-GTP"/>
+                        <outlet property="gridSpot4" destination="JYt-9I-3ZD" id="AqP-ZI-Pt6"/>
+                        <outlet property="gridSpot5" destination="bwA-Vf-qix" id="l1T-K7-Myc"/>
+                        <outlet property="gridSpot6" destination="1iT-n3-8lw" id="hyB-8Q-zMB"/>
+                        <outlet property="gridSpot7" destination="nvW-6A-4Wc" id="gQh-A5-NUu"/>
+                        <outlet property="gridSpot8" destination="Ipg-VQ-Iw2" id="CwF-ZF-kw1"/>
+                        <outlet property="placeablePlayerMark" destination="VJS-o2-KLp" id="i8s-Xu-QMK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wrE-yn-HjV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="281.5" y="1128.5"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="X" width="388" height="388"/>
+    </resources>
 </document>

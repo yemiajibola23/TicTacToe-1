@@ -22,7 +22,6 @@
 
 @property NSString *player;
 @property NSArray *grid;
-@property NSString *whoWon;
 @property NSString *gridPlaceholder;
 @end
 
@@ -42,65 +41,9 @@
 - (IBAction)onButtonTapped:(UIButton *)sender {
     [sender setTitle:[NSString stringWithFormat:@"%@",self.player] forState:UIControlStateNormal];
     [sender setHighlighted:NO];
-    
-    
-    NSLog(@"%@",[_grid[0] currentTitle]);
-    
-    
-    
-    if ([[_grid[0] currentTitle] isEqualToString:self.player]
-        && [[_grid[1] currentTitle] isEqualToString:self.player]
-        && [[_grid[2] currentTitle] isEqualToString:self.player]){
-        self.whoWon = self.player;
-        [self proclaimVictory:self.whoWon];
-        
-    } else if([[_grid[3] currentTitle] isEqualToString:self.player]
-              && [[_grid[4] currentTitle] isEqualToString:self.player]
-              && [[_grid[5] currentTitle] isEqualToString:self.player]){
-        self.whoWon = self.player;
-        [self proclaimVictory:self.whoWon];
-        
-    } else if([[_grid[6] currentTitle] isEqualToString:self.player]
-              && [[_grid[7] currentTitle] isEqualToString:self.player]
-              && [[_grid[8] currentTitle] isEqualToString:self.player]){
-        self.whoWon = self.player;
-        [self proclaimVictory:self.whoWon];
-        
-    } else if([[_grid[0] currentTitle] isEqualToString:self.player]
-              && [[_grid[4] currentTitle] isEqualToString:self.player]
-              && [[_grid[8] currentTitle] isEqualToString:self.player]){
-        
-        self.whoWon = self.player;
-        [self proclaimVictory:self.whoWon];
-    } else if([[_grid[0] currentTitle] isEqualToString:self.player]
-              && [[_grid[3] currentTitle] isEqualToString:self.player]
-              && [[_grid[6] currentTitle] isEqualToString:self.player]){
-        
-        self.whoWon = self.player;
-        [self proclaimVictory:self.whoWon];
-    } else if([[_grid[1] currentTitle] isEqualToString:self.player]
-              && [[_grid[4] currentTitle] isEqualToString:self.player]
-              && [[_grid[7] currentTitle] isEqualToString:self.player]){
-        
-        self.whoWon = self.player;
-        [self proclaimVictory:self.whoWon];
-    } else if([[_grid[2] currentTitle] isEqualToString:self.player]
-              && [[_grid[5] currentTitle] isEqualToString:self.player]
-              && [[_grid[8] currentTitle] isEqualToString:self.player]){
-        
-        self.whoWon = self.player;
-        [self proclaimVictory:self.whoWon];
-    } else if([[_grid[2] currentTitle] isEqualToString:self.player]
-              && [[_grid[4] currentTitle] isEqualToString:self.player]
-              && [[_grid[6] currentTitle] isEqualToString:self.player]){
-
-        self.whoWon = self.player;
-        [self proclaimVictory:self.whoWon];
-    }
-
     [sender setEnabled:false];
     
-    
+    [self checkForWinner];
     
     if ([self.player isEqualToString:@"X"]) {
         self.player = @"O";
@@ -129,12 +72,74 @@
 
 }
 
+-(void)tieGame {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"It's a tie!"
+                                                                   message:@"No one wins :("
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"Play Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self resetGame];
+    }]];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+
+}
+
 -(void)resetGame {
     for (UIButton *button in self.grid) {
         [button setTitle:@"[ ]" forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button setEnabled:YES];
     }
+}
+
+-(void)checkForWinner {
+    
+    if ([[_grid[0] currentTitle] isEqualToString:self.player]
+        && [[_grid[1] currentTitle] isEqualToString:self.player]
+        && [[_grid[2] currentTitle] isEqualToString:self.player]){
+        [self proclaimVictory:self.player];
+    } else if([[_grid[3] currentTitle] isEqualToString:self.player]
+              && [[_grid[4] currentTitle] isEqualToString:self.player]
+              && [[_grid[5] currentTitle] isEqualToString:self.player]){
+        [self proclaimVictory:self.player];
+    } else if([[_grid[6] currentTitle] isEqualToString:self.player]
+              && [[_grid[7] currentTitle] isEqualToString:self.player]
+              && [[_grid[8] currentTitle] isEqualToString:self.player]){
+        [self proclaimVictory:self.player];
+    } else if([[_grid[0] currentTitle] isEqualToString:self.player]
+              && [[_grid[4] currentTitle] isEqualToString:self.player]
+              && [[_grid[8] currentTitle] isEqualToString:self.player]){
+        [self proclaimVictory:self.player];
+    } else if([[_grid[0] currentTitle] isEqualToString:self.player]
+              && [[_grid[3] currentTitle] isEqualToString:self.player]
+              && [[_grid[6] currentTitle] isEqualToString:self.player]){
+        [self proclaimVictory:self.player];
+    } else if([[_grid[1] currentTitle] isEqualToString:self.player]
+              && [[_grid[4] currentTitle] isEqualToString:self.player]
+              && [[_grid[7] currentTitle] isEqualToString:self.player]){
+        [self proclaimVictory:self.player];
+    } else if([[_grid[2] currentTitle] isEqualToString:self.player]
+              && [[_grid[5] currentTitle] isEqualToString:self.player]
+              && [[_grid[8] currentTitle] isEqualToString:self.player]){
+        [self proclaimVictory:self.player];
+    } else if([[_grid[2] currentTitle] isEqualToString:self.player]
+              && [[_grid[4] currentTitle] isEqualToString:self.player]
+              && [[_grid[6] currentTitle] isEqualToString:self.player]){
+        [self proclaimVictory:self.player];
+    }
+    
+    for (int i = 0; i < 9; i++) {
+        if ([_grid[i] isEnabled]) {
+            break;
+        }
+        if (i == 8) {
+            [self tieGame];
+            return;
+        }
+    }
+    
 }
 
 

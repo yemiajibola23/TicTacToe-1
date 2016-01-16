@@ -8,12 +8,10 @@
 
 #import "GameViewController.h"
 #import "DraggableImageView.h"
-#import "GridSpot.h"
 #import "SuperEvilMegaAI.h"
 
-@interface GameViewController ()
 
-@property (weak, nonatomic) IBOutlet DraggableImageView *placeablePlayerMark;
+@interface GameViewController ()
 
 @property (weak, nonatomic) IBOutlet GridSpot *gridSpot0;
 @property (weak, nonatomic) IBOutlet GridSpot *gridSpot1;
@@ -24,10 +22,16 @@
 @property (weak, nonatomic) IBOutlet GridSpot *gridSpot6;
 @property (weak, nonatomic) IBOutlet GridSpot *gridSpot7;
 @property (weak, nonatomic) IBOutlet GridSpot *gridSpot8;
+@property NSArray *gridSpots;
+
+@property NSArray *winningBoards;
+
+@property NSMutableString *board;
 
 @property (weak, nonatomic) IBOutlet DraggableImageView *draggableToken;
 
-@property NSArray *gridSpots;
+
+@property NSMutableArray *winning3;
 
 @end
 
@@ -35,29 +39,89 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setupBoard];
+    _winningBoards = @[@"###------",
+                       @"---###---",
+                       @"------###",
+                       @"#--#--#--",
+                       @"-#--#--#-",
+                       @"--#--#--#",
+                       @"#---#---#",
+                       @"--#-#-#--"];
+}
 
+-(void)movePlaced:(GridSpot*)gridSpot {    
+    [_board replaceCharactersInRange:NSMakeRange([gridSpot gridSpotID], 1) withString:[NSString stringWithFormat:@"%c",[gridSpot token]]];
+    [self checkForWinner];
+}
+
+-(void)checkForWinner {
+    
+    int boardIndex = 0;
+    int countX[8] = {0,0,0,0,0,0,0,0};
+    int countO[8] = {0,0,0,0,0,0,0,0};
+    for (NSString *winBoard in _winningBoards) {
+        
+        for (int i = 0; i < 9; i++) {
+            if ( [winBoard characterAtIndex:i] == '#' ) {
+                
+                if ([_board characterAtIndex:i] == 'x' ) {
+                    countX[boardIndex]++;
+                } else if ([_board characterAtIndex:i] == 'o' ) {
+                    countO[boardIndex]++;
+                }
+            }
+        }
+        boardIndex++;
+    }
+    
+    for (int i = 0; i < 8; i++) {
+        if (countX[i] == 3) {
+            [self proclaimWinner:@"X" winningBoard:[_winningBoards objectAtIndex:i] draw:NO];
+            return;
+        } else if( countO[i] == 3) {
+            [self proclaimWinner:@"O" winningBoard:[_winningBoards objectAtIndex:i] draw:NO];
+            return;
+        }
+    }
+    
+    if (![_board containsString:@"-"]) {
+        [self proclaimWinner:@"" winningBoard:_board draw:YES];
+    }
+}
+
+-(void)proclaimWinner:(NSString *)winner winningBoard:(NSString *)board draw:(BOOL)draw {
+    [_draggableToken setHidden:YES];
+    
+    if (!draw) {
+        NSLog(@"%@ Wins! %@",winner,board);
+        
+        for (int x = 0; x < 9; x++) {
+            if ([board characterAtIndex:x] == '#') {
+                [_gridSpots[x] highlightWithColor:[UIColor whiteColor]];
+            }
+        }
+    } else {
+        NSLog(@"DRAW.. %@",board);
+    }
+    
+}
+
+-(void)setupBoard {
+    _board = [NSMutableString stringWithString: @"---------"];
     _gridSpots = [[NSArray alloc] initWithObjects:_gridSpot0,_gridSpot1,_gridSpot2,
                                                   _gridSpot3,_gridSpot4,_gridSpot5,
                                                   _gridSpot6,_gridSpot7,_gridSpot8, nil];
     for (int i = 0; i < [_gridSpots count]; i++) {
         [_gridSpots[i] setGridSpotID:i];
+        [_gridSpots[i] resetImage];
     }
-    [_draggableToken setup:_gridSpots];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movePlaced) name:@"Move Placed" object:nil];
+    [_draggableToken setup:_gridSpots gameVC:self];
+    _winning3 = [NSMutableArray arrayWithArray:@[]];
 }
 
--(void)movePlaced {
-    NSLog(@"move placed!"); 
-    
-    [self checkForWinner];
-    
+- (IBAction)onResetTapped:(id)sender {
+    [self setupBoard];
 }
-
--(void)checkForWinner {
-    
-    
-    
-}
-
 @end

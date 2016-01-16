@@ -92,6 +92,10 @@
 		4C61CB361C4950DD00A9555D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				13F9795C1C4836A300E09A8E /* AppDelegate.h */,
+				13F9795D1C4836A300E09A8E /* AppDelegate.m */,
+				4C61CB4B1C49AA0500A9555D /* SuperEvilMegaAI.h */,
+				4C61CB4C1C49AA0500A9555D /* SuperEvilMegaAI.m */,
 				13F9795F1C4836A300E09A8E /* ViewController.h */,
 				13F979601C4836A300E09A8E /* ViewController.m */,
 				4C61CB3C1C49517D00A9555D /* GameViewController.h */,
@@ -119,11 +123,7 @@
 		4C61CB381C4950EB00A9555D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				13F9795C1C4836A300E09A8E /* AppDelegate.h */,
-				13F9795D1C4836A300E09A8E /* AppDelegate.m */,
 				13F9796A1C4836A300E09A8E /* Info.plist */,
-				4C61CB4B1C49AA0500A9555D /* SuperEvilMegaAI.h */,
-				4C61CB4C1C49AA0500A9555D /* SuperEvilMegaAI.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -159,7 +159,7 @@
 				TargetAttributes = {
 					13F979551C4836A300E09A8E = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = L88J8VK7QC;
+						DevelopmentTeam = 77N74LDXL5;
 					};
 				};
 			};
@@ -316,7 +316,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TicTacToe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Mobile-Makers.TicTacToe";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -327,7 +329,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TicTacToe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Mobile-Makers.TicTacToe";
 				PRODUCT_NAME = "$(TARGET_NAME)";

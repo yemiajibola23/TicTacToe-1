@@ -13,6 +13,12 @@
 -(void)awakeFromNib {
     _x = [UIImage imageNamed:@"X"];
     _o = [UIImage imageNamed:@"O"];
+    
+}
+
+-(void)layoutSubviews {
+    [super layoutSubviews];
+    [self setImage:[[self image] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
 }
 
 - (BOOL)myImageisEqualTo:(UIImage *)image

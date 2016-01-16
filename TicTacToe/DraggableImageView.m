@@ -13,7 +13,7 @@
 
 @property CGPoint originalPosition;
 @property NSArray *gridSpots;
-
+@property GameViewController* gameVC;
 
 
 @end
@@ -30,11 +30,13 @@
     [self setOriginalPosition:CGPointMake([self center].x, [self center].y)];
 }
 
--(void)setup:(NSArray *)grid {
+-(void)setup:(NSArray *)grid gameVC:(GameViewController *)gameVC {
     [self setGridSpots:grid];
+    [self setGameVC:gameVC];
+    [self setImage:super.x];
+    [self setHidden:NO];
 }
 
-#pragma -mark Touch
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self setCenter:CGPointMake([[touches anyObject] locationInView:[self superview]].x, [[touches anyObject] locationInView:[self superview]].y)];
@@ -52,11 +54,11 @@
         if (CGRectContainsPoint([dropTarget boundsInSuperView], dropLocation)) {
 
             if ([dropTarget dropToken:[self image]]) {
-                NSLog(@"Valid drop");
-                [self switchImage];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"Move Placed" object:nil];
+                //NSLog(@"Valid drop");
+                [dropTarget setToken:[self tokenDrop]];
+                [_gameVC movePlaced:dropTarget];
             } else {
-                NSLog(@"Rejected drop");
+                //NSLog(@"Rejected drop");
             }
         }
     }
@@ -65,13 +67,14 @@
     [self setCenter:_originalPosition];
 }
 
-//-----------------------------
 
--(void)switchImage {
+-(char)tokenDrop {
     if ([self myImageisEqualTo:super.x]) {
         [self setImage:super.o];
+        return 'x';
     } else {
         [self setImage:super.x];
+        return 'o';
     }
 }
 

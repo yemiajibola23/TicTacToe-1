@@ -13,7 +13,9 @@
 
 @property int gridSpotID;
 @property CGRect boundsInSuperView;
-
+@property char token;
 -(BOOL)dropToken:(UIImage *)token;
-
+-(void)dropAnimation;
+-(void)resetImage;
+-(void)highlightWithColor:(UIColor *)color;
 @end

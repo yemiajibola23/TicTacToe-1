@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "TokenImageView.h"
+#import "GameViewController.h"
 
 @interface DraggableImageView : TokenImageView
 
--(void)setup:(NSArray *)grid;
+-(void)setup:(NSArray *)grid gameVC:(GameViewController *)gameVC;
 
 @end

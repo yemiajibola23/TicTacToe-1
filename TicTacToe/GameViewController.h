@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GridSpot.h"
 
 @interface GameViewController : UIViewController
-
+-(void)movePlaced:(GridSpot*)gridSpot;
 @end

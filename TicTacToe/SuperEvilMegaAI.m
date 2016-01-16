@@ -10,4 +10,9 @@
 
 @implementation SuperEvilMegaAI
 
+-(int)makeMove:(NSString*)board {
+    return 0;
+}
+
+
 @end

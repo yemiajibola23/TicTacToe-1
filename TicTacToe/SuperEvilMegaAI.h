@@ -8,8 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum : NSUInteger {
+    easy,
+    medium,
+    hard,
+} Difficulty;
+
 @interface SuperEvilMegaAI : NSObject
 
 //Be afraid, very afraid
+
+-(int)makeMove:(NSString*)board;
 
 @end

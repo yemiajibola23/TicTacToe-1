@@ -11,4 +11,5 @@
 
 @interface GameViewController : UIViewController
 -(void)movePlaced:(GridSpot*)gridSpot;
+-(void)gameMode:(int)mode;
 @end

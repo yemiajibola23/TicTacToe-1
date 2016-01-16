@@ -17,7 +17,7 @@ typedef enum : NSUInteger {
 @interface SuperEvilMegaAI : NSObject
 
 //Be afraid, very afraid
-
+@property char myToken;
 -(int)makeMove:(NSString*)board;
 
 @end

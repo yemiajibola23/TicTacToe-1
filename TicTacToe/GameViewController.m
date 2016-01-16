@@ -22,15 +22,13 @@
 @property (weak, nonatomic) IBOutlet GridSpot *gridSpot6;
 @property (weak, nonatomic) IBOutlet GridSpot *gridSpot7;
 @property (weak, nonatomic) IBOutlet GridSpot *gridSpot8;
-@property NSArray *gridSpots;
-
-@property NSArray *winningBoards;
-
-@property NSMutableString *board;
-
 @property (weak, nonatomic) IBOutlet DraggableImageView *draggableToken;
 
+@property SuperEvilMegaAI *HAL;
 
+@property NSArray *gridSpots;
+@property NSArray *winningBoards;
+@property NSMutableString *board;
 @property NSMutableArray *winning3;
 
 @end
@@ -94,16 +92,29 @@
 -(void)proclaimWinner:(NSString *)winner winningBoard:(NSString *)board draw:(BOOL)draw {
     [_draggableToken setHidden:YES];
     
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"DRAW!" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Main Menu" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [[self navigationController] popToRootViewControllerAnimated:YES];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Play Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self setupBoard];
+    }]];
+    
     if (!draw) {
         NSLog(@"%@ Wins! %@",winner,board);
-        
         for (int x = 0; x < 9; x++) {
             if ([board characterAtIndex:x] == '#') {
                 [_gridSpots[x] highlightWithColor:[UIColor whiteColor]];
             }
         }
+        
+        [alert setTitle:[NSString stringWithFormat:@"%@ WINS!",winner]];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        
     } else {
         NSLog(@"DRAW.. %@",board);
+        [self presentViewController:alert animated:YES completion:nil];
     }
     
 }
@@ -124,4 +135,23 @@
 - (IBAction)onResetTapped:(id)sender {
     [self setupBoard];
 }
+
+-(void)gameMode:(int)mode {
+    switch (mode) {
+        case 0:
+            
+            break;
+        case 1:
+            
+            break;
+        case 2:
+            
+            break;
+            
+        default:
+            break;
+    }
+}
+
+
 @end

@@ -18,6 +18,7 @@
 		4C61CB441C4956D100A9555D /* GridSpot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61CB431C4956D100A9555D /* GridSpot.m */; };
 		4C61CB4A1C49892200A9555D /* TokenImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61CB491C49892200A9555D /* TokenImageView.m */; };
 		4C61CB4D1C49AA0500A9555D /* SuperEvilMegaAI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C61CB4C1C49AA0500A9555D /* SuperEvilMegaAI.m */; };
+		4CE7D6111C4AA1C800B06443 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE7D6101C4AA1C800B06443 /* MenuViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		4C61CB491C49892200A9555D /* TokenImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenImageView.m; sourceTree = "<group>"; };
 		4C61CB4B1C49AA0500A9555D /* SuperEvilMegaAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperEvilMegaAI.h; sourceTree = "<group>"; };
 		4C61CB4C1C49AA0500A9555D /* SuperEvilMegaAI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperEvilMegaAI.m; sourceTree = "<group>"; };
+		4CE7D60F1C4AA1C800B06443 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		4CE7D6101C4AA1C800B06443 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,8 @@
 				13F979601C4836A300E09A8E /* ViewController.m */,
 				4C61CB3C1C49517D00A9555D /* GameViewController.h */,
 				4C61CB3D1C49517D00A9555D /* GameViewController.m */,
+				4CE7D60F1C4AA1C800B06443 /* MenuViewController.h */,
+				4CE7D6101C4AA1C800B06443 /* MenuViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C61CB4A1C49892200A9555D /* TokenImageView.m in Sources */,
+				4CE7D6111C4AA1C800B06443 /* MenuViewController.m in Sources */,
 				4C61CB3E1C49517D00A9555D /* GameViewController.m in Sources */,
 				4C61CB441C4956D100A9555D /* GridSpot.m in Sources */,
 				13F979611C4836A300E09A8E /* ViewController.m in Sources */,

@@ -9,14 +9,14 @@
 #import "GridSpot.h"
 
 @interface GridSpot()
-
+@property CGRect defaultPos;
 @end
 
 @implementation GridSpot
 
 -(void)awakeFromNib {
    [super awakeFromNib];
-    
+    _defaultPos = [self frame];
 }
 
 -(void)layoutSubviews {
@@ -24,6 +24,7 @@
     [self setBoundsInSuperView:[self convertRect: [self bounds] toView:[[[self superview]
                                                                                superview]
                                                                                superview] ]];
+    
 }
 
 -(BOOL)dropToken:(UIImage *)token {
@@ -51,7 +52,6 @@
     int dist = 10;
     
     CGRect dropPos = [self frame];
-    CGRect defaultPos = [self frame];
     
     dropPos.size = CGSizeMake(dropPos.size.width - dist, dropPos.size.height - dist);
     dropPos.origin = CGPointMake(dropPos.origin.x + (dist/2), dropPos.origin.y + (dist/2));
@@ -63,10 +63,7 @@
     } completion:^(BOOL finished) {
         
         [UIView animateWithDuration:0.1 animations:^{
-            [self setFrame:defaultPos];
-            
-        } completion:^(BOOL finished) {
-            
+            [self setFrame:_defaultPos];
             
         }];
       

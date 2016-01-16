@@ -27,39 +27,36 @@
 @property SuperEvilMegaAI *HAL;
 
 @property NSArray *gridSpots;
-@property NSArray *winningBoards;
+@property NSArray *winningBoards3x3;
 @property NSMutableString *board;
-@property NSMutableArray *winning3;
-
+@property int gameMode;
 @end
 
 @implementation GameViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self setupBoard];
-    _winningBoards = @[@"###------",
-                       @"---###---",
-                       @"------###",
-                       @"#--#--#--",
-                       @"-#--#--#-",
-                       @"--#--#--#",
-                       @"#---#---#",
-                       @"--#-#-#--"];
 }
+
+
+
+#pragma mark Movement
 
 -(void)movePlaced:(GridSpot*)gridSpot {    
     [_board replaceCharactersInRange:NSMakeRange([gridSpot gridSpotID], 1) withString:[NSString stringWithFormat:@"%c",[gridSpot token]]];
     [self checkForWinner];
 }
 
+
+#pragma mark Win Checking and Handle
+
 -(void)checkForWinner {
     
     int boardIndex = 0;
     int countX[8] = {0,0,0,0,0,0,0,0};
     int countO[8] = {0,0,0,0,0,0,0,0};
-    for (NSString *winBoard in _winningBoards) {
+    for (NSString *winBoard in _winningBoards3x3) {
         
         for (int i = 0; i < 9; i++) {
             if ( [winBoard characterAtIndex:i] == '#' ) {
@@ -76,10 +73,10 @@
     
     for (int i = 0; i < 8; i++) {
         if (countX[i] == 3) {
-            [self proclaimWinner:@"X" winningBoard:[_winningBoards objectAtIndex:i] draw:NO];
+            [self proclaimWinner:@"X" winningBoard:[_winningBoards3x3 objectAtIndex:i] draw:NO];
             return;
         } else if( countO[i] == 3) {
-            [self proclaimWinner:@"O" winningBoard:[_winningBoards objectAtIndex:i] draw:NO];
+            [self proclaimWinner:@"O" winningBoard:[_winningBoards3x3 objectAtIndex:i] draw:NO];
             return;
         }
     }
@@ -119,6 +116,9 @@
     
 }
 
+
+#pragma mark Setup
+
 -(void)setupBoard {
     _board = [NSMutableString stringWithString: @"---------"];
     _gridSpots = [[NSArray alloc] initWithObjects:_gridSpot0,_gridSpot1,_gridSpot2,
@@ -129,7 +129,34 @@
         [_gridSpots[i] resetImage];
     }
     [_draggableToken setup:_gridSpots gameVC:self];
-    _winning3 = [NSMutableArray arrayWithArray:@[]];
+    
+    _winningBoards3x3 =  @[@"###------",
+                           @"---###---",
+                           @"------###",
+                           @"#--#--#--",
+                           @"-#--#--#-",
+                           @"--#--#--#",
+                           @"#---#---#",
+                           @"--#-#-#--"];
+
+    switch (_gameMode) {
+        case 0:
+            //One Player
+            _HAL = [[SuperEvilMegaAI alloc]init];
+            
+            break;
+        case 1:
+            //Two Player
+            
+            break;
+        case 2:
+            //Online
+            
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (IBAction)onResetTapped:(id)sender {
@@ -137,20 +164,7 @@
 }
 
 -(void)gameMode:(int)mode {
-    switch (mode) {
-        case 0:
-            
-            break;
-        case 1:
-            
-            break;
-        case 2:
-            
-            break;
-            
-        default:
-            break;
-    }
+    _gameMode = mode;
 }
 
 

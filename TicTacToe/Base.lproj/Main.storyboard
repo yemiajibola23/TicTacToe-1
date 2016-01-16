@@ -212,6 +212,9 @@
                                     <constraint firstAttribute="width" constant="75" id="oKl-Rl-XK7"/>
                                 </constraints>
                                 <state key="normal" title="One Player"/>
+                                <connections>
+                                    <segue destination="lTm-Bd-kyh" kind="show" id="4HD-Zu-VgX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.87843137250000003" green="0.34901960780000002" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
@@ -407,4 +410,7 @@
         <image name="Placeholder" width="256" height="256"/>
         <image name="X" width="388" height="388"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="4HD-Zu-VgX"/>
+    </inferredMetricsTieBreakers>
 </document>

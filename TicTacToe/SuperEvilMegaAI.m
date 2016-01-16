@@ -11,7 +11,7 @@
 @interface SuperEvilMegaAI()
 
 @property int move;
-@property NSArray *winningBoards;
+@property NSArray *winningBoards3x3;
 
 
 @end
@@ -22,7 +22,7 @@
 {
     self = [super init];
     if (self) {
-        _winningBoards = @[@"###------",
+        _winningBoards3x3 = @[@"###------",
                            @"---###---",
                            @"------###",
                            @"#--#--#--",
@@ -70,7 +70,7 @@
     
     int threeInARow = 0;
         //Check Each win board
-    for (NSString *winBoard in _winningBoards) {
+    for (NSString *winBoard in _winningBoards3x3) {
             //Chack each grid spot in the board
         for (int i = 0; i < 9; i++) {
             if ([winBoard characterAtIndex:i] == '#' && [board characterAtIndex:i] == _myToken) {

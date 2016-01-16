@@ -36,7 +36,7 @@
 
 -(int)makeMove:(NSString*)board {
     
-    NSLog(@"HAL's toekn is %c",_myToken);
+    //NSLog(@"HAL's token is %c",_myToken);
     
     if (![self can:_myToken WinWith:board]) {
         

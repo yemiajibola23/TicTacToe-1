@@ -86,12 +86,12 @@
 
 
 -(void)animateToGridSpot:(GridSpot *)view {
-    NSLog(@"Center: (%f,%f)",[self center].x, [self center].y);
+    //NSLog(@"Center: (%f,%f)",[self center].x, [self center].y);
     [self setCenter:_originalPosition];
-    NSLog(@"Center: (%f,%f)",[self center].x, [self center].y);
+    //NSLog(@"Center: (%f,%f)",[self center].x, [self center].y);
     CGRect newFrame = [view boundsInSuperView];
    // CGPoint newCenter = CGPointMake(newFrame.origin.x - (newFrame.size.width/2), newFrame.origin.y - (newFrame.size.height/2));
-    NSLog(@"%f,%f",newFrame.origin.x,newFrame.origin.y);
+   // NSLog(@"%f,%f",newFrame.origin.x,newFrame.origin.y);
     
     self.frame = newFrame;
     [self drop];

@@ -23,8 +23,10 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton *)sender {
-    GameViewController *gameVC = [segue destinationViewController];
-    [gameVC gameMode:(int)[sender tag]];
+    if ([[segue identifier] isEqualToString:@"menuToGame"]) {
+        GameViewController *gameVC = [segue destinationViewController];
+        [gameVC gameMode:(int)[sender tag]];
+    }
 }
 
 

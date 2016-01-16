@@ -38,7 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupBoard];
-    NSLog(@"X turn");
+    //NSLog(@"X turn");
 }
 
 
@@ -52,7 +52,9 @@
     //NSLog(@"%@  %i  %c",_board, [gridSpot gridSpotID], [gridSpot token]);
     //NSLog(@"%c's turn!",player == 'x' ? 'o' : 'x');
     
-    [self checkForWinner];
+    if ([self checkForWinner]) {
+        return;
+    }
     if (player == _playerToken) {
         [self placeAIMoveAtIndex:[_HAL makeMove:_board]];
     }
@@ -74,7 +76,7 @@
 
 #pragma mark Win Checking and Handle
 
--(void)checkForWinner {
+-(BOOL)checkForWinner {
     
     int boardIndex = 0;
     int countX[8] = {0,0,0,0,0,0,0,0};
@@ -97,16 +99,19 @@
     for (int i = 0; i < 8; i++) {
         if (countX[i] == 3) {
             [self proclaimWinner:@"X" winningBoard:[_winningBoards3x3 objectAtIndex:i] draw:NO];
-            return;
+            return YES;
         } else if( countO[i] == 3) {
             [self proclaimWinner:@"O" winningBoard:[_winningBoards3x3 objectAtIndex:i] draw:NO];
-            return;
+            return YES;
         }
     }
     
     if (![_board containsString:@"-"]) {
         [self proclaimWinner:@"" winningBoard:_board draw:YES];
+        return YES;
     }
+    
+    return NO;
 }
 
 -(void)proclaimWinner:(NSString *)winner winningBoard:(NSString *)board draw:(BOOL)draw {

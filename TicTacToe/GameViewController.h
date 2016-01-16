@@ -10,6 +10,6 @@
 #import "GridSpot.h"
 
 @interface GameViewController : UIViewController
--(void)movePlaced:(GridSpot*)gridSpot;
+-(void)movePlaced:(GridSpot*)gridSpot byPlayer:(char)player;
 -(void)gameMode:(int)mode;
 @end

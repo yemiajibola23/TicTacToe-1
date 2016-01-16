@@ -29,6 +29,7 @@
 @property NSArray *gridSpots;
 @property NSArray *winningBoards3x3;
 @property NSMutableString *board;
+@property char playerToken;
 @property int gameMode;
 @end
 
@@ -37,17 +38,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupBoard];
+    NSLog(@"X turn");
 }
 
 
 
 #pragma mark Movement
 
--(void)movePlaced:(GridSpot*)gridSpot {    
+-(void)movePlaced:(GridSpot*)gridSpot byPlayer:(char)player {
+    
+    //NSLog(@"%@  %i  %c",_board, [gridSpot gridSpotID], [gridSpot token]);
     [_board replaceCharactersInRange:NSMakeRange([gridSpot gridSpotID], 1) withString:[NSString stringWithFormat:@"%c",[gridSpot token]]];
+    //NSLog(@"%@  %i  %c",_board, [gridSpot gridSpotID], [gridSpot token]);
+    //NSLog(@"%c's turn!",player == 'x' ? 'o' : 'x');
+    
     [self checkForWinner];
+    if (player == _playerToken) {
+        [self placeAIMoveAtIndex:[_HAL makeMove:_board]];
+    }
 }
 
+-(void)placeAIMoveAtIndex:(int)index {
+    NSLog(@"HAL makes move at %i",index);
+    
+    [_draggableToken animateToGridSpot:[_gridSpots objectAtIndex:index]];
+    
+//    [UIView animateWithDuration:0.3 animations:^{
+//        [_draggableToken setFrame:[[_gridSpots objectAtIndex:index] boundsInSuperView]];
+//    } completion:^(BOOL finished) {
+//        [_draggableToken drop];
+//        [self movePlaced:[_gridSpots objectAtIndex:index] byPlayer:_playerToken == 'x' ? 'o' : 'x'];
+//    }];
+    
+}
 
 #pragma mark Win Checking and Handle
 
@@ -90,7 +113,8 @@
     [_draggableToken setHidden:YES];
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"DRAW!" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Main Menu" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    [alert addAction:[UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Main Menu" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [[self navigationController] popToRootViewControllerAnimated:YES];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"Play Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -139,10 +163,32 @@
                            @"#---#---#",
                            @"--#-#-#--"];
 
+    UIAlertController *tokenChoose = [UIAlertController alertControllerWithTitle:@"Choose your token" message:@"X goes first, and O second" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [tokenChoose addAction:[UIAlertAction actionWithTitle:@"X" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        _playerToken = 'x';
+        [_HAL setMyToken:'o'];
+    }]];
+    
+    [tokenChoose addAction:[UIAlertAction actionWithTitle:@"O" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        _playerToken = 'o';
+        [_HAL setMyToken:'x'];
+        [self placeAIMoveAtIndex:[_HAL makeMove:_board]];
+        
+    }]];
+    
+    [tokenChoose addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        [[self navigationController] popToRootViewControllerAnimated:YES];
+    }]];
+    
+    
     switch (_gameMode) {
         case 0:
             //One Player
             _HAL = [[SuperEvilMegaAI alloc]init];
+            [self presentViewController:tokenChoose animated:YES completion:nil];
             
             break;
         case 1:

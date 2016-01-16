@@ -11,7 +11,7 @@
 #import "GameViewController.h"
 
 @interface DraggableImageView : TokenImageView
-
+-(void)drop;
 -(void)setup:(NSArray *)grid gameVC:(GameViewController *)gameVC;
-
+-(void)animateToGridSpot:(UIView *)view;
 @end

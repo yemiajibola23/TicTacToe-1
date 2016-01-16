@@ -24,7 +24,6 @@
     [self setBoundsInSuperView:[self convertRect: [self bounds] toView:[[[self superview]
                                                                                superview]
                                                                                superview] ]];
-    
 }
 
 -(BOOL)dropToken:(UIImage *)token {
